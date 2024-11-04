@@ -4,12 +4,12 @@
     "name" : "tests.test_example",
     "children" : [ {
       "name" : "test_one",
-      "uid" : "9dc311d304913fb4",
+      "uid" : "651e16f479870041",
       "parentUid" : "d41b485e6ae74c08f28d57b63af1a517",
       "status" : "passed",
       "time" : {
-        "start" : 1730754495556,
-        "stop" : 1730754495556,
+        "start" : 1730754670098,
+        "stop" : 1730754670098,
         "duration" : 0
       },
       "flaky" : false,
@@ -21,12 +21,12 @@
       "parameters" : [ ]
     }, {
       "name" : "test_two",
-      "uid" : "d193bdf84d50c783",
+      "uid" : "7b3e0a103399fdf2",
       "parentUid" : "d41b485e6ae74c08f28d57b63af1a517",
       "status" : "passed",
       "time" : {
-        "start" : 1730754495557,
-        "stop" : 1730754495557,
+        "start" : 1730754670100,
+        "stop" : 1730754670100,
         "duration" : 0
       },
       "flaky" : false,
@@ -38,13 +38,47 @@
       "parameters" : [ ]
     }, {
       "name" : "test_three",
-      "uid" : "35ba84a489d12747",
+      "uid" : "eceeb31170c8faed",
       "parentUid" : "d41b485e6ae74c08f28d57b63af1a517",
       "status" : "passed",
       "time" : {
-        "start" : 1730754495558,
-        "stop" : 1730754495559,
-        "duration" : 1
+        "start" : 1730754670101,
+        "stop" : 1730754670101,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_four",
+      "uid" : "127b9dd8ef97681f",
+      "parentUid" : "d41b485e6ae74c08f28d57b63af1a517",
+      "status" : "passed",
+      "time" : {
+        "start" : 1730754670102,
+        "stop" : 1730754670102,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_five",
+      "uid" : "723eaf941bb297ca",
+      "parentUid" : "d41b485e6ae74c08f28d57b63af1a517",
+      "status" : "passed",
+      "time" : {
+        "start" : 1730754670103,
+        "stop" : 1730754670103,
+        "duration" : 0
       },
       "flaky" : false,
       "newFailed" : false,
