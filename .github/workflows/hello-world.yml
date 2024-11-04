@@ -27,11 +27,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Install Allure command-line tool
-      - name: Install Allure command-line
+      # Step 4: Download and install Allure command-line tool
+      - name: Install Allure CLI
         run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
+          ALLURE_VERSION=2.17.3
+          wget -q "https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz"
+          tar -xzf "allure-${ALLURE_VERSION}.tgz"
+          sudo mv "allure-${ALLURE_VERSION}" /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       # Step 5: Run tests with Allure
       - name: Run tests with pytest and generate Allure results
