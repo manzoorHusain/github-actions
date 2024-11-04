@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x' # Use the desired Python version
+          python-version: '3.10.4' # Use the desired Python version
 
       # Step 3: Install dependencies from requirements.txt
       - name: Install dependencies
@@ -27,21 +27,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Run tests with Allure
+      # Step 4: Install Allure command-line tool
+      - name: Install Allure command-line
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y allure
+
+      # Step 5: Run tests with Allure
       - name: Run tests with pytest and generate Allure results
         run: |
           mkdir -p allure-results
           pytest --alluredir=allure-results
 
-      # Step 5: Generate Allure report
+      # Step 6: Generate Allure report
       - name: Generate Allure report
         run: |
           mkdir -p allure-report
           allure generate allure-results -o allure-report --clean
-        env:
-          ALLURE_HOME: /usr/share/allure # Specify Allure home if necessary
 
-      # Step 6: Deploy Allure report to GitHub Pages
+      # Step 7: Deploy Allure report to GitHub Pages
       - name: Deploy Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
