@@ -1,0 +1,53 @@
+{
+  "uid" : "b1707d4a2a32d045",
+  "name" : "test_1",
+  "fullName" : "tests.test_example2#test_1",
+  "historyId" : "2e13214865de259b42a8652a56db4ccd",
+  "time" : {
+    "start" : 1730804184640,
+    "stop" : 1730804184640,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_example2"
+  }, {
+    "name" : "host",
+    "value" : "fv-az568-35"
+  }, {
+    "name" : "thread",
+    "value" : "1753-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_example2"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b1707d4a2a32d045.json",
+  "parameterValues" : [ ]
+}
