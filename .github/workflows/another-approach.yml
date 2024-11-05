@@ -1,0 +1,45 @@
+name: Run Tests and Publish Allure Report
+
+on:
+  push:
+    branches:
+      - main
+      - feat-one
+
+jobs:
+  test-and-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.4'
+
+      # Step 3: Install dependencies from requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Step 4: Run tests and generate Allure results
+      - name: Run tests with pytest and generate Allure results
+        run: |
+          pytest --alluredir=allure-results
+      - name: Install Allure
+        run: |
+          wget https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip
+          unzip allure-2.14.0.zip -d /opt/allure
+          export PATH=$PATH:/opt/allure/allure-2.14.0/bin
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages   # Set the branch to 'gh-pages'
+          publish_dir: ./allure-report
