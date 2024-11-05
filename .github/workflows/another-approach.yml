@@ -30,11 +30,14 @@ jobs:
       - name: Run tests with pytest and generate Allure results
         run: |
           pytest --alluredir=allure-results
-      - name: Install Allure
+      - name: Download and Install Allure
         run: |
+          # Download Allure CLI
           wget https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip
+          # Unzip it
           unzip allure-2.14.0.zip -d /opt/allure
-          export PATH=$PATH:/opt/allure/allure-2.14.0/bin
+          # Add Allure to PATH
+          echo "/opt/allure/allure-2.14.0/bin" >> $GITHUB_PATH
       - name: Generate Allure Report
         run: |
           allure generate allure-results -o allure-report --clean
