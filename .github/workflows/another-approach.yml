@@ -32,10 +32,7 @@ jobs:
           pytest --alluredir=allure-results
       - name: Download and Install Allure
         run: |
-      # Download and extract Allure directly to /opt/allure
-         wget -qO- https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip | sudo bsdtar -xvf- -C /opt/
-    
-    # Create a symbolic link to make Allure accessible globally
+         wget -qO- https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.tgz | tar -xz -C /opt/
          sudo ln -s /opt/allure-2.14.0/bin/allure /usr/local/bin/allure
 
       - name: Generate Allure Report
@@ -48,13 +45,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./allure-report
-
-#
-#      - name: Download and Install Allure
-#        run: |
-#          # Download Allure CLI
-#          wget https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip
-#          # Unzip it
-#          unzip allure-2.14.0.zip -d /opt/allure
-#          # Add Allure to PATH
-#          echo "/opt/allure/allure-2.14.0/bin" >> $GITHUB_PATH
