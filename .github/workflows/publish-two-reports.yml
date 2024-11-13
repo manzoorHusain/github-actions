@@ -1,0 +1,56 @@
+name: Publish Allure Reports
+
+on:
+  # Allows the workflow to be manually triggered from the Actions tab
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Select the branch to deploy"
+        required: true
+        default: "main"  # Set a default branch if needed
+        type: choice
+        options:
+          - main
+          - develop  # Add more branches here if necessary
+
+jobs:
+  build-and-deploy:
+    # Runs on the selected branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}  # Checkout the selected branch
+
+      # Step 1: Run your tests and generate Allure reports
+      - name: Run Tests and Generate Allure Report 1
+        run: |
+          # Run your first set of tests here
+          # Example: pytest --alluredir=allure-results-1
+          
+          # Generate the first Allure report
+          allure generate allure-results-1 -o allure-report-1 --clean
+
+      - name: Run Tests and Generate Allure Report 2
+        run: |
+          # Run your second set of tests here
+          # Example: pytest --alluredir=allure-results-2
+          
+          # Generate the second Allure report
+          allure generate allure-results-2 -o allure-report-2 --clean
+
+      # Step 2: Copy reports to the 'docs' folder
+      - name: Prepare GitHub Pages content
+        run: |
+          mkdir -p docs/report1 docs/report2
+          cp -r allure-report-1/* docs/report1/
+          cp -r allure-report-2/* docs/report2/
+
+      # Step 3: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB }}
+          publish_dir: ./docs
